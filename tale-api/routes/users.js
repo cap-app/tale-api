@@ -22,8 +22,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-    console.log(req.body)
-    var update = JSON.parse(req.body.user);
+    console.log(req.body);
     var id = req.params.user_id;
     User.findById(id, function(err, user) {
         if (err) {
