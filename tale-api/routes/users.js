@@ -29,6 +29,8 @@ router.put('/', function(req, res, next) {
         } else {
             console.log("Updating location started \n " +
                 "Updating User: " +  this);
+            console.log(req.body.location);
+            console.log(req.body.id);
             user.location = req.body.location;
             user.save(function(err) {
                 console.log((err ? "Failed." : "Success."));
@@ -39,7 +41,7 @@ router.put('/', function(req, res, next) {
             }, function(err) {
                 console.log("Updating of User ETA failed: " + err);
             });
-            res.json(result);
+            res.json(user);
         }
     });
 });
