@@ -24,7 +24,8 @@ router.post('/', function(req, res, next) {
 router.put('/', function(req, res, next) {
     console.log(req.body);
     var id = req.params.id;
-    User.findByIdAndUpdate(id, req.body, function(err, result) {
+    var update = JSON.parse(req.body);
+    User.findByIdAndUpdate(id, update, function(err, result) {
         if (err) {
             console.log('Error updating location: ' + err);
             res.send({'error':'An error has occurred'});
