@@ -3,12 +3,10 @@ var mongoose = require('mongoose');
 // Use native Node promises
 mongoose.Promise = global.Promise;
 // connect to MongoDB
-mongoose.connect('mongodb://localhost/tale-app').then(function () {
-    console.log('connection succesful');
-}).catch(function (err) {
-        console.error(err);
-    }
-);
+mongoose.connect('mongodb://tale_mongoadmin:ooChequ8th@localhost:21422/tale-app', {
+    useMongoClient: true
+    /* other options */
+});
 
 var express = require('express');
 var path = require('path');
