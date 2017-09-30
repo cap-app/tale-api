@@ -4,14 +4,14 @@ const googleMapsClient = require('../node_modules/@google/maps').createClient({
 });
 var Group = require('mongoose').model('Group');
 
+
 async function updateUserEta(user) {
     var groups = Group.findAllUserGroups(user);
     var destination = [];
     groups.forEach(function(group) {
       destination.push(group.address);
     });
-    // Promise.all(promises);
-    return googleMapsClient.distanceMatrix({
+    await googleMapsClient.distanceMatrix({
         origins: [
             user.location
         ],

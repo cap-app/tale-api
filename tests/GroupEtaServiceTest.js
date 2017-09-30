@@ -1,6 +1,5 @@
 var updateUserService = require('../tale-api/services/updateUserEta.js');
 
-
 function testGroupBasic() {
     var person1 = {userName: "John1",
         location: "49.0044918,8.3899858",
