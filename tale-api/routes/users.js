@@ -34,11 +34,11 @@ router.put('/', function(req, res, next) {
             console.log(req.body.location);
             console.log(req.body.id);
 
-            userUpdateService.updateUserEta(this).then(function() {
+           /* userUpdateService.updateUserEta(this).then(function() {
                 console.log("Update of User was successful");
             }, function(err) {
                 console.log("Updating of User ETA failed: " + err);
-            });
+            });*/
             res.json(result);
         }
     });
