@@ -23,30 +23,21 @@ router.post('/', function(req, res, next) {
 
 router.put('/', function(req, res, next) {
     console.log(req.body);
-    var id = new ObjectId(req.params.id);
-    //var update = JSON.parse(req.body);
+    var id = req.params.id;
 
-    User.findById(id, function(err, user) {
+    User.findByOneAndUpdate(id, req, function(err, user) {
         if (err) {
             console.log('Error updating location: ' + err);
             res.send({'error':'An error has occurred'});
         } else {
             console.log("Updating location started \n " +
                 "Updating User: " +  this);
-            console.log(req.body.location);
-            console.log(req.body.id);
-            user.location = req.body.location;
-            user.save(function(err) {
-                if (err) {
-                    console.log("Error while saving");
-                }
-            });
            /* userUpdateService.updateUserEta(this).then(function() {
                 console.log("Update of User was successful");
             }, function(err) {
                 console.log("Updating of User ETA failed: " + err);
             });*/
-            res.json(result);
+            res.send(user);
         }
     });
 });
