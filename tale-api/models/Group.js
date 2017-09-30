@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 var GroupSchema = new mongoose.Schema({
     groupName: String,
     address: String,
-    etaLast: String,
-    users: Array,
+    etaLast: number,
+    users: Array
 });
 
 // Export a model based on the schema
