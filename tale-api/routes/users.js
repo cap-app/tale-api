@@ -31,7 +31,7 @@ router.put('/', function(req, res, next) {
                 "Updating User: " +  this);
             user.location = req.body.location;
             user.save(function(err) {
-                console.log((err ? "Failed." : "Success.");
+                console.log((err ? "Failed." : "Success."));
             });
 
             userUpdateService.updateUserEta(this).then(function() {
