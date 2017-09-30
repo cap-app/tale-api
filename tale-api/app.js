@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 // Use native Node promises
 mongoose.Promise = global.Promise;
 // connect to MongoDB
-mongoose.connect('mongodb://tale_mongoadmin:ooChequ8th@localhost:21422/tale-app', {
+mongoose.connect('mongodb://tale_mongoadmin:ooChequ8th@127.0.0.1:21422/tale-app', {
     useMongoClient: true
     /* other options */
 });
