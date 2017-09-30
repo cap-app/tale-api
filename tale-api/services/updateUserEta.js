@@ -2,7 +2,8 @@ const googleMapsClient = require('../node_modules/@google/maps').createClient({
     key: 'AIzaSyAjp_mHqTsLdQ0pNwlpeTqPnFaX_nKOqds',
     Promise: Promise
 });
-const Group = require('mongoose').model('Group');
+require('mongoose');
+const Group = require('../models/Group');
 const TRAFFIC_MODEL = 'best_guess';
 
 
