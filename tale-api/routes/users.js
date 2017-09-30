@@ -27,8 +27,13 @@ router.put('/', function(req, res, next) {
             console.log('Error updating location: ' + err);
             res.send({'error':'An error has occurred'});
         } else {
-            console.log("Updating location successful");
-            userUpdateService.updateUserEta(this);
+            console.log("Updating location successful \n " +
+                "Updating User: " +  this);
+            userUpdateService.updateUserEta(this).then(function() {
+                console.log("Update of User was successful");
+            }, function(err) {
+                console.log("Updating of User ETA failed: " + err);
+            });
             res.json(result);
         }
     });
