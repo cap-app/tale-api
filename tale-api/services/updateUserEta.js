@@ -2,10 +2,10 @@ const googleMapsClient = require('../node_modules/@google/maps').createClient({
     key: 'AIzaSyAjp_mHqTsLdQ0pNwlpeTqPnFaX_nKOqds',
     Promise: Promise
 });
+var Group = require('mongoose').model('Group');
 
 async function updateUserEta(user) {
-    var time = [];
-    var groups = findGroups(user);
+    var groups = Group.findAllUserGroups(user);
     var destination = [];
     groups.forEach(function(group) {
       destination.push(group.address);
@@ -45,8 +45,8 @@ async function updateUserEta(user) {
 }
 
 function findGroups(user) {
-    var groups = [];
-    // TODO Add request for all groups
+
+
 
     return groups;
 }
