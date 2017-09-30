@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var GroupSchema = new mongoose.Schema({
     groupName: String,
     address: String,
-    etaLast: number,
+    etaLast: Number,
     users: Array
 });
 
