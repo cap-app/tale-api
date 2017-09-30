@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 // Use native Node promises
 mongoose.Promise = global.Promise;
 // connect to MongoDB
-mongoose.connect('mongodb://tale-app-login:g2R45latl6ulT@tale-app-cluster-shard-00-00-kdowf.mongodb.net:27017,tale-app-cluster-shard-00-01-kdowf.mongodb.net:27017,tale-app-cluster-shard-00-02-kdowf.mongodb.net:27017/test?ssl=true&replicaSet=tale-app-Cluster-shard-0&authSource=admin');
+mongoose.connect('mongodb://139.162.130.38:27017/tale-app');
 
 var express = require('express');
 var path = require('path');
