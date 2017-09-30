@@ -35,7 +35,7 @@ router.put('/', function(req, res, next) {
                 "Updating User: " +  this);
             console.log(req.body.location);
             console.log(req.body.id);
-            user.location = update.location;
+            user.location = req.body.location;
             user.save(function(err) {
                 if (err) {
                     console.log("Error while saving");
