@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-    User.findOneAndUpdate({'_id': req.query.id}, {$set: {location: req.query.location}}, function(err, result) {
+    User.findOneAndUpdate({'id': req.query.id}, {$set: {location: req.query.location}}, function(err, result) {
         if (err) {
             console.log('Error updating location: ' + err);
             res.send({'error':'An error has occurred'});
