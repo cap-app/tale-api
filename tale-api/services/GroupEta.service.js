@@ -1,5 +1,5 @@
 var distance = require('google-distance-matrix');
-distance.key('<Your API key here>');
+distance.key('AIzaSyAjp_mHqTsLdQ0pNwlpeTqPnFaX_nKOqds');
 
 function getGroupETA(group) {
     var destination = new Array(group.destination);
