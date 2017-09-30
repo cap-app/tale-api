@@ -22,13 +22,16 @@ router.post('/', function(req, res, next) {
 });
 
 router.put('/', function(req, res, next) {
-    User.findById(req.body.id, function(err, user) {
+    User.findById(req.params.id, function(err, user) {
         if (err) {
             console.log('Error updating location: ' + err);
             res.send({'error':'An error has occurred'});
         } else {
             console.log("Updating location started \n " +
                 "Updating User: " +  this);
+            console.log(req.query.id);
+            console.log(req.params.id);
+            console.log(req.params.location);
             console.log(req.body.location);
             console.log(req.body.id);
             user.location = req.body.location;
