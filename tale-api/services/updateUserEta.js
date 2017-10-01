@@ -56,8 +56,17 @@ async function updateUserEta(user) {
         group.etaLast = eta;
         group.save();
         console.log("User was slowest.");
+        group.etaText = parseTime(eta);
     }
 }
 
+function parseTime(eta) {
+    let seconds = eta % 60;
+    eta /= 60;
+    let minutes = eta % 60;
+    eta /= 60;
+    let hours = eta
+    return hours + ":" + minutes + ":" + seconds;
+}
 
 exports.updateUserEta = updateUserEta;
