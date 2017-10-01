@@ -11,7 +11,7 @@ var GroupSchema = new mongoose.Schema({
 
 
 GroupSchema.statics.findAllUserGroups = function(user) {
-    return this.find({users:  { $all : [ user ] }});
+    return this.find({users:  { $all : [ user ] }}).toObject();
 };
 
 // Export a model based on the schema
