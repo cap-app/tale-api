@@ -31,13 +31,13 @@ router.put('/', function(req, res, next) {
             res.send({'error':'An error has occurred'});
         } else {
             console.log("Updating location started \n " +
-                "Updating User: " +  this);
+                "Updating User: " +  user);
            /* userUpdateService.updateUserEta(this).then(function() {
                 console.log("Update of User was successful");
             }, function(err) {
                 console.log("Updating of User ETA failed: " + err);
             });*/
-            res.send(user);
+            res.json(user);
         }
     });
 });
