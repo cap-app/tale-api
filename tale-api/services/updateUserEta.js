@@ -14,6 +14,8 @@ async function updateUserEta(user) {
         groups.forEach(function (group) {
             destination.push(group.address);
         });
+        //TESTING HERE NOW
+        console.log(destination);
         googleMapsClient.distanceMatrix({
             origins: [
                 user.location
