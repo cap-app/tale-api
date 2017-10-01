@@ -40,10 +40,10 @@ async function updateUserEta(user) {
                     updateLastEta(eta, groups[i]);
                 }
                 console.log("Update finished");
-            })
+            }
         }, function () {
             console.log("API Call screwed up.")
-        })
+        }))
     });
 }
 
