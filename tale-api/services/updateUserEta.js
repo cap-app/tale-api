@@ -52,13 +52,14 @@ async function updateUserEta(user) {
 }
 
  function updateLastEta(eta, group, user_id) {
+    var max = 0;
     for (var i = 0; i < group.user_ids.length; i++) {
         if (user_id === group.user_ids[i]) {
             group.etaUser[i] = eta;
-            break;
         }
+        max = Math.max(group.etaUser[i], max);
     }
-    group.etaLast = Math.max.apply(null, group.etaUser);
+    group.etaLast = max;
     group.etaText = parseTime(eta);
     group.save();
     console.log("User was slowest.");
