@@ -32,6 +32,7 @@ router.put('/', function(req, res, next) {
         } else {
             console.log("Updating location started \n " +
                 "Updating User: " +  user);
+            console.log(req.body);
            userUpdateService.updateUserEta(user).then(function() {
                  console.log("Update of User was successful");
             }, function(err) {
