@@ -34,7 +34,7 @@ async function updateUserEta(user) {
             if (err) {
                 console.log("API SCREWED UP: " + err);
             } else {
-                console.log("Call returned with response: " + reponse);
+                console.log("Call returned with response: " );
                 if (response.status === 200) {
                     console.log("Received correct response.");
                     console.log("Start updating group Eta");
