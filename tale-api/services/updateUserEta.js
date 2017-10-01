@@ -3,7 +3,7 @@ const googleMapsClient = require('../node_modules/@google/maps').createClient({
     Promise: Promise
 });
 require('mongoose');
-const Group = require('mongose').model('Group').schema;
+const Group = require('mongoose').model('Group').schema;
 const TRAFFIC_MODEL = 'best_guess';
 
 
