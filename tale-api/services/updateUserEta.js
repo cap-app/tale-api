@@ -30,7 +30,7 @@ async function updateUserEta(user) {
          //   traffic_model: TRAFFIC_MODEL
 
         }, function(err, response) {
-            console.log("At Least callback function");
+            console.log("At Least callback function" + err);
             if (err) {
                 console.log("API SCREWED UP: " + err);
             } else {
