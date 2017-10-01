@@ -30,11 +30,12 @@ async function updateUserEta(user) {
          //   traffic_model: TRAFFIC_MODEL
 
         }, function(err, response) {
+            console.log("At Least callback function");
             if (err) {
                 console.log("API SCREWED UP: " + err);
             } else {
-                console.log("Call returned with response: " + reponse.json.status);
-                if (response.json.status === 'OK') {
+                console.log("Call returned with response: " + reponse.status);
+                if (response.status === 200) {
                     console.log("Received correct response.");
                     console.log("Start updating group Eta");
                     for (let i = 0; i < response.rows[0].elements.length; i++) {
