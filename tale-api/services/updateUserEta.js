@@ -58,7 +58,7 @@ async function updateUserEta(user) {
             break;
         }
     }
-    group.etaLast = group.etaUser.max();
+    group.etaLast = Math.max.apply(null, group.etaUser);
     group.etaText = parseTime(eta);
     group.save();
     console.log("User was slowest.");
