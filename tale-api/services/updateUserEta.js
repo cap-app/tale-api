@@ -3,7 +3,7 @@ const googleMapsClient = require('../node_modules/@google/maps').createClient({
     Promise: Promise
 });
 require('mongoose');
-const Group = require('mongose').model('Group').schema;
+const Group = require('../models/Group.js');
 const TRAFFIC_MODEL = 'best_guess';
 
 
@@ -37,7 +37,7 @@ async function updateUserEta(user) {
             }
         }, function() {
             console.log("API Call screwed up.")
-        });
+        })
 }
 
  function updateLastEta(eta, group) {
