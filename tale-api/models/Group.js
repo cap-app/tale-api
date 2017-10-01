@@ -12,6 +12,7 @@ var GroupSchema = new mongoose.Schema({
 
 GroupSchema.statics.findAllUserGroups = async function(user) {
     await this.find({users:  { $all : [ user ] }}, function (err, groups) {
+        console.log(groups);
         return groups;
     });
 };
