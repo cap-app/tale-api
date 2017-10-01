@@ -17,16 +17,14 @@ async function updateUserEta(user) {
         });
         //TESTING HERE NOW
         console.log("from: " + user.location);
-        console.log("to: " + [destination]);
         console.log(destination);
         console.log("transit: " + user.transitMode);
         googleMapsClient.distanceMatrix({
             origins: [
                 [user.location]
             ],
-            destinations: [
-                [destination]
-            ],
+            destinations:
+                [destination],
             mode: user.transitMode,
 
         }).asPromise().then(function(response) {
