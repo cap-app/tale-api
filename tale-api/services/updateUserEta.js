@@ -34,12 +34,12 @@ async function updateUserEta(user) {
             if (err) {
                 console.log("API SCREWED UP: " + err);
             } else {
-                console.log("Call returned with response: " );
+                console.log("Call returned with response: "     );
                 if (response.status === 200) {
                     console.log("Received correct response.");
                     console.log("Start updating group Eta");
-                    for (let i = 0; i < response.rows[0].elements.length; i++) {
-                        let eta = response.rows[0].elements[i].duration.value;
+                    for (let i = 0; i < response.json.rows[0].elements.length; i++) {
+                        let eta = response.json.rows[0].elements[i].duration.value;
                         console.log("Updating Group: " + i);
                         updateLastEta(eta, groups[i]);
                     }
