@@ -8,7 +8,7 @@ const TRAFFIC_MODEL = 'best_guess';
 
 
 async function updateUserEta(user) {
-    let groups = Group.findAllUserGroups(user);
+    let groups = await Group.findAllUserGroups(user);
     console.log("Groups: " + groups);
     let destination = [];
     groups.forEach(function(group) {

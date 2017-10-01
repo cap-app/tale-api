@@ -9,10 +9,10 @@ var GroupSchema = new mongoose.Schema({
 });
 
 
-GroupSchema.statics.findAllUserGroups = function(user) {
-    let result = this.find({users:  { $all : [ user ] }}).lean();
-    console.log(result);
-    return result;
+GroupSchema.statics.findAllUserGroups = async function(user) {
+    await this.find({users:  { $all : [ user ] }}, function (err, groups) {
+        return groups;
+    });
 };
 
 // Export a model based on the schema
