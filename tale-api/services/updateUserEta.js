@@ -27,7 +27,7 @@ async function updateUserEta(user) {
                 destination
             ],
             mode: user.transitMode,
-            traffic_model: TRAFFIC_MODEL
+         //   traffic_model: TRAFFIC_MODEL
 
         }).asPromise().then(function (response) {
             if (response.status === 'OK') {
