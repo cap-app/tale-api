@@ -31,7 +31,7 @@ async function updateUserEta(user) {
 
         }).asPromise().then((response) => {
             console.log("Call returned with response: " + reponse.json.status);
-            if (response.status === 'OK') {
+            if (response.json.status === 'OK') {
                 console.log("Received correct response.");
                 console.log("Start updating group Eta");
                 for (let i = 0; i < response.rows[0].elements.length; i++) {
