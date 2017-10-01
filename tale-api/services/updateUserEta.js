@@ -62,9 +62,9 @@ async function updateUserEta(user) {
             console.log("Found user.");
             group.etaUser[i] = eta;
         }
-        if (max) {
-            var temp = group.etaUser[i];
-            max = temp > max ? temp : max;
+        var temp = group.etaUser[i];
+        if (temp) {
+            max = (temp > max ? temp : max);
         }
     }
     console.log(group.etaUser);
