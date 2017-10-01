@@ -9,9 +9,10 @@ const Group = require('../models/Group.js');
 async function updateUserEta(user) {
     Group.find({user_ids:  { $in: [ user.id ] }}, function (err, groups) {
         console.log("Groups: " + groups);
-        let destination = [[]];
+        let destination = new Array(groups.length);
+        var i = 0;
         groups.forEach(function (group) {
-            destination[destination.length-1].push(group.address);
+            destination[i++].push(group.address);
         });
         //TESTING HERE NOW
         console.log("from: " + user.location);
