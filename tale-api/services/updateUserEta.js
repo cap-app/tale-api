@@ -41,9 +41,9 @@ async function updateUserEta(user) {
                 }
                 console.log("Update finished");
             }
-        }, function () {
+        }), function () {
             console.log("API Call screwed up.")
-        }))
+        })
     });
 }
 
