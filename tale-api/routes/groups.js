@@ -53,12 +53,22 @@ router.get('/time', function (req, res) {
     })
 });
 
-router.delete('/', function (req, res) {
-    Group.findByIdAndRemove(req.body.id, function(err, res) {
+router.get('timebulk', function (req, res) {
+    Group.find({_id : req.body.meetings_ids},function (err, groups) {
         if (err) {
             res.send(err);
         } else {
-            res.json(res);
+            res.json(groups);
+        }
+    })
+})
+
+router.delete('/', function (req, res) {
+    Group.findByIdAndRemove(req.body.id, function(err, group) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(group);
         }
     })
 })
