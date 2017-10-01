@@ -32,7 +32,8 @@ async function updateUserEta(user) {
             } else {
                 if (response.status === 200) {
                     console.log(response.json.status);
-                    console.log("Received correct response.");
+                    console.log(response.json);
+                   /* console.log("Received correct response.");
                     console.log("Start updating group Eta");
                     console.dir(response.json.results);
                     for (let i = 0; i < response.json.results.rows[0].elements.length; i++) {
@@ -40,7 +41,7 @@ async function updateUserEta(user) {
                         console.log("Updating Group: " + i);
                         updateLastEta(eta, groups[i]);
                     }
-                    console.log("Update finished");
+                    console.log("Update finished"); */
                 } else {
                     console.log("Call was not correct.");
                 }
