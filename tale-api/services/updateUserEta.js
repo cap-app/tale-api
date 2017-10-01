@@ -19,7 +19,7 @@ async function updateUserEta(user) {
         console.log("transit: " + user.transitMode);
         googleMapsClient.distanceMatrix({
             origins: [
-                user.location
+                [user.location]
             ],
             destinations: [
                 destination
