@@ -53,6 +53,16 @@ router.get('/time/:id', function (req, res) {
     })
 });
 
+router.get('/user/:id', function (req, res) {
+    Group.find({_id: req.params.id, function(err, groups) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(groups);
+        }
+    }})
+})
+
 
 router.delete('/', function (req, res) {
     Group.findByIdAndRemove(req.body.id, function(err, group) {
