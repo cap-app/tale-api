@@ -44,9 +44,9 @@ router.put('/', function (req, res, next) {
  * Just getting time without to much information
  */
 router.get('/time', function (req, res) {
-    Group.findById(req.param.id, function(err, group) {
+    Group.findById(req.body.id, function(err, group) {
         if (err) {
-            res.send("Error while searching for Group");
+            res.send(err);
         } else {
             res.json({etaLast: group.etaLast});
         }
@@ -54,9 +54,9 @@ router.get('/time', function (req, res) {
 });
 
 router.delete('/', function (req, res) {
-    Group.findByIdAndRemove(req.param.id, function(err, group) {
+    Group.findByIdAndRemove(req.body.id, function(err, res) {
         if (err) {
-            res.send("Could not delete Group with id " + req.param.id);
+            res.send(err);
         } else {
             res.json(res);
         }
