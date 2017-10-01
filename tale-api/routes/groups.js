@@ -33,4 +33,18 @@ router.put('/', function (req, res, next) {
     });
 });
 
+router.post('/addUser', function (req, res) {
+    Group.findByIdAndUpdate(req.body.id,
+        {
+            $push: {
+                "users": {
+                    name: req.body.user.id
+                }
+            }
+        }, { safe: true }, function (err, response) {
+            if (err) throw err;
+            res.json(response);
+        });
+});
+
 module.exports = router;
