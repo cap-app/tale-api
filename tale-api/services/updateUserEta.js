@@ -40,8 +40,7 @@ async function updateUserEta(user) {
                     for (let i = 0; i < response.json.rows[0].elements.length; i++) {
                         let eta = response.json.rows[0].elements[i].duration.value;
                         console.log("Updating Group: " + i);
-                        groups[i].street = response.json.destination_addresses[0];
-                        updateLastEta(eta, groups[i], user.id);
+                        updateLastEta(eta, groups[i], user.id, respone.json.destination_addresses[0]);
                     }
                     console.log("Update finished");
                 } else {
@@ -52,7 +51,7 @@ async function updateUserEta(user) {
     });
 }
 
- function updateLastEta(eta, group, user_id) {
+ function updateLastEta(eta, group, user_id, street) {
     var max = 0;
     if (group.etaUser.length !== group.user_ids.length) {
         console.log("Creating new Array");
@@ -72,6 +71,7 @@ async function updateUserEta(user) {
     console.log(max);
     group.markModified('etaUser');
     group.etaLast = max;
+    group.street = street;
     group.etaText = parseTime(max);
     group.save();
     console.log("User was slowest.");
