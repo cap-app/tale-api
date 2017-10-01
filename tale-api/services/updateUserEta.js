@@ -12,6 +12,7 @@ async function updateUserEta(user) {
         let destination = new Array(groups.length);
         var i = 0;
         groups.forEach(function (group) {
+            destination[i] = new Array();
             destination[i++].push(group.address);
         });
         //TESTING HERE NOW
