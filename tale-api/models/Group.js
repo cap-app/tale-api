@@ -1,11 +1,12 @@
 var mongoose = require('mongoose');
+const User = require('mongoose').model('User').schema;
 
 // create project schema
 var GroupSchema = new mongoose.Schema({
     groupName: String,
     address: String,
     etaLast: Number,
-    users: Array,
+    users: [User]
 });
 
 
