@@ -53,4 +53,14 @@ router.get('/time', function (req, res) {
     })
 });
 
+router.delete('/', function (req, res) {
+    Group.findByIdAndRemove(req.param.id, function(err, group) {
+        if (err) {
+            res.send("Could not delete Group with id " + req.param.id);
+        } else {
+            res.json(res);
+        }
+    })
+})
+
 module.exports = router;
