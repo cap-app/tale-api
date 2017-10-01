@@ -3,19 +3,18 @@ const googleMapsClient = require('../node_modules/@google/maps').createClient({
     Promise: Promise
 });
 require('mongoose');
-const Group = require('../models/Group');
+const Group = require('mongose').model('Group').schema;
 const TRAFFIC_MODEL = 'best_guess';
 
 
 async function updateUserEta(user) {
-    Group.findAllUserGroups(user).then(function(groups) {
-        console.log("Groups: " + groups);
-        let destination = [];
-        groups.forEach(function (group) {
-            destination.push(group.address);
-        });
-    }).then(function() {
-        googleMapsClient.distanceMatrix({
+    let groups = await Group.findAllUserGroups(user);
+    console.log("Groups: " + groups);
+    let destination = [];
+    groups.forEach(function (group) {
+        destination.push(group.address);
+    });
+    await googleMapsClient.distanceMatrix({
             origins: [
                 user.location
             ],
@@ -38,8 +37,7 @@ async function updateUserEta(user) {
             }
         }, function() {
             console.log("API Call screwed up.")
-        })
-    });
+        });
 }
 
  function updateLastEta(eta, group) {
