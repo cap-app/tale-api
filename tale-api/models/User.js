@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+const User = require('User.js');
 
 // create project schema
 var UserSchema = new mongoose.Schema({
