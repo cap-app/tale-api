@@ -10,7 +10,7 @@ var GroupSchema = new mongoose.Schema({
 
 
 GroupSchema.statics.findAllUserGroups = function(user) {
-    let result = this.find({users:  { $all : [ user ] }});
+    let result = this.find({users:  { $all : [ user ] }}).lean();
     console.log(result);
     return result;
 };
