@@ -43,8 +43,8 @@ router.put('/', function (req, res, next) {
 /**
  * Just getting time without to much information
  */
-router.get('/time', function (req, res) {
-    Group.findById(req.body.id, function(err, group) {
+router.get('/time/:id', function (req, res) {
+    Group.findById(req.params.id, function(err, group) {
         if (err) {
             res.send(err);
         } else {
@@ -53,15 +53,6 @@ router.get('/time', function (req, res) {
     })
 });
 
-router.get('timebulk', function (req, res) {
-    Group.find({_id : req.body.meetings_ids},function (err, groups) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.json(groups);
-        }
-    })
-})
 
 router.delete('/', function (req, res) {
     Group.findByIdAndRemove(req.body.id, function(err, group) {
