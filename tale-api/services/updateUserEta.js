@@ -8,13 +8,13 @@ const TRAFFIC_MODEL = 'best_guess';
 
 
 async function updateUserEta(user) {
-    await Group.findAllUserGroups(user);
-    console.log("Groups: " + groups);
-    let destination = [];
-    groups.forEach(function (group) {
-        destination.push(group.address);
-    });
-    await googleMapsClient.distanceMatrix({
+    Group.find({user_ids:  { $in: [ user.id ] }}, function (err, groups) {
+        console.log("Groups: " + groups);
+        let destination = [];
+        groups.forEach(function (group) {
+            destination.push(group.address);
+        });
+        googleMapsClient.distanceMatrix({
             origins: [
                 user.location
             ],
@@ -24,7 +24,7 @@ async function updateUserEta(user) {
             mode: user.transitMode,
             traffic_model: TRAFFIC_MODEL
 
-        }).asPromise().then(function(response) {
+        }).asPromise().then(function (response) {
             if (response.status === 'OK') {
                 console.log("Received correct response.");
                 console.log("Start updating group Eta");
@@ -35,9 +35,10 @@ async function updateUserEta(user) {
                 }
                 console.log("Update finished");
             }
-        }, function() {
+        }, function () {
             console.log("API Call screwed up.")
         })
+    });
 }
 
  function updateLastEta(eta, group) {
