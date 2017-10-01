@@ -29,8 +29,8 @@ async function updateUserEta(user) {
             mode: user.transitMode,
          //   traffic_model: TRAFFIC_MODEL
 
-        }).asPromise().then(function (response) {
-            console.log("Call returned with response: " + reponse.status);
+        }).asPromise().then(((response) => {
+            console.log("Call returned with response: " + reponse.json.status);
             if (response.status === 'OK') {
                 console.log("Received correct response.");
                 console.log("Start updating group Eta");
@@ -40,7 +40,7 @@ async function updateUserEta(user) {
                     updateLastEta(eta, groups[i]);
                 }
                 console.log("Update finished");
-            }
+            })
         }, function () {
             console.log("API Call screwed up.")
         })
