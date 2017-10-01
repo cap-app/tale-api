@@ -8,7 +8,8 @@ var GroupSchema = new mongoose.Schema({
     user_ids: [String],
     etaText: String,
     etaUser: [Number | null],
-    icon: String
+    icon: String,
+    street: String
 });
 
 // Export a model based on the schema
