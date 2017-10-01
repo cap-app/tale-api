@@ -54,10 +54,12 @@ async function updateUserEta(user) {
  function updateLastEta(eta, group, user_id) {
     var max = 0;
     if (group.etaUser.length !== group.user_ids.length) {
+        console.log("Creating new Array");
         group.etaUser = new Array(group.user_ids.length);
     }
     for (var i = 0; i < group.user_ids.length; i++) {
         if (user_id === group.user_ids[i]) {
+            console.log("Found user.");
             group.etaUser[i] = eta;
         }
         max = Math.max(group.etaUser[i], max);
