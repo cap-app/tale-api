@@ -17,7 +17,6 @@ async function updateUserEta(user) {
         console.log("from: " + user.location);
         console.log("to: " + destination);
         console.log("transit: " + user.transitMode);
-        console.log("traffic_model: " + TRAFFIC_MODEL);
         googleMapsClient.distanceMatrix({
             origins: [
                 user.location
@@ -28,11 +27,9 @@ async function updateUserEta(user) {
             mode: user.transitMode,
 
         }, function(err, response) {
-            console.log("At Least callback function" + err);
             if (err) {
                 console.log("API SCREWED UP: " + err);
             } else {
-                console.log("Call returned with response: "     );
                 if (response.status === 200) {
                     console.log("Received correct response.");
                     console.log("Start updating group Eta");
@@ -42,6 +39,8 @@ async function updateUserEta(user) {
                         updateLastEta(eta, groups[i]);
                     }
                     console.log("Update finished");
+                } else {
+                    console.log("Call was not correct.");
                 }
             }
         });
