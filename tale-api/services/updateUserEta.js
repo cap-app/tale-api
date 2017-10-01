@@ -1,6 +1,6 @@
 const googleMapsClient = require('../node_modules/@google/maps').createClient({
     key: 'AIzaSyAjp_mHqTsLdQ0pNwlpeTqPnFaX_nKOqds',
-    Promise: JSON
+    Promise: Promise
 });
 require('mongoose');
 const Group = require('../models/Group.js');
@@ -29,7 +29,7 @@ async function updateUserEta(user) {
             mode: user.transitMode,
          //   traffic_model: TRAFFIC_MODEL
 
-        }).asPromise().then(function(response) {
+        }).asPromise().then((response) => {
             console.log("Call returned with response: " + reponse.json.status);
             if (response.status === 'OK') {
                 console.log("Received correct response.");
@@ -41,8 +41,8 @@ async function updateUserEta(user) {
                 }
                 console.log("Update finished");
             }
-        }, function () {
-            console.log("API Call screwed up.")
+        }).catch((err) => {
+            console.log("API Call screwed up." + err);
         })
     });
 }
