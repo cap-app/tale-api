@@ -50,6 +50,7 @@ async function updateUserEta(user) {
  function updateLastEta(eta, group) {
     if (eta > group.etaLast) {
         group.etaLast = eta;
+        group.save();
         console.log("User was slowest.");
     }
 }
