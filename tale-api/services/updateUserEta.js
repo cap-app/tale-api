@@ -4,7 +4,7 @@ const googleMapsClient = require('../node_modules/@google/maps').createClient({
 });
 require('mongoose');
 const Group = require('../models/Group.js');
-const TRAFFIC_MODEL = 'best_guess';
+const TRAFFIC_MODEL = "best_guess";
 
 
 async function updateUserEta(user) {
@@ -27,7 +27,7 @@ async function updateUserEta(user) {
                 destination
             ],
             mode: user.transitMode,
-         //   traffic_model: TRAFFIC_MODEL
+           traffic_model: TRAFFIC_MODEL
 
         }, function(err, response) {
             console.log("At Least callback function" + err);
