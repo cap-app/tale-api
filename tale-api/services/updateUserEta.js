@@ -12,8 +12,9 @@ async function updateUserEta(user) {
         let destination = new Array(groups.length);
         var i = 0;
         groups.forEach(function (group) {
-            destination[i] = new Array();
-            destination[i++].push(group.address);
+            destination[i] = new Array(2);
+            destination[i][0] = group.address[0];
+            destination[i][1] = group.address[1];
         });
         //TESTING HERE NOW
         console.log("from: " + user.location);
