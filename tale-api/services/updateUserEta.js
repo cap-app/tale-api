@@ -36,12 +36,12 @@ async function updateUserEta(user) {
                     console.log("Received correct response.");
                     console.log("Start updating group Eta");
                     console.log(response.json.rows[0].elements);
-                   /* for (let i = 0; i < response.json.results.rows[0].elements.length; i++) {
+                    for (let i = 0; i < response.json.results.rows[0].elements.length; i++) {
                         let eta = response.json.results.rows[0].elements[i].duration.value;
                         console.log("Updating Group: " + i);
                         updateLastEta(eta, groups[i]);
                     }
-                    console.log("Update finished"); */
+                    console.log("Update finished");
                 } else {
                     console.log("Call was not correct.");
                 }
