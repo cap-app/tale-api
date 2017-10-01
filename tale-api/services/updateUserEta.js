@@ -34,8 +34,8 @@ async function updateUserEta(user) {
                     console.log("Received correct response.");
                     console.log("Start updating group Eta");
                     console.dir(response.json.results);
-                    for (let i = 0; i < response.json.rows[0].elements.length; i++) {
-                        let eta = response.json.rows[0].elements[i].duration.value;
+                    for (let i = 0; i < response.json.results.rows[0].elements.length; i++) {
+                        let eta = response.json.results.rows[0].elements[i].duration.value;
                         console.log("Updating Group: " + i);
                         updateLastEta(eta, groups[i]);
                     }
