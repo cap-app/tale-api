@@ -20,4 +20,17 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.put('/', function (req, res, next) {
+    var id = req.body._id;
+    Group.findOneAndUpdate(id, {$set: {groupName: req.body.groupName, address: req.body.address, users: req.body.users}}, {new: true}, function(err, result) {
+        if (err) {
+            console.log('Error updating the Group: ' + err);
+            res.send({'error':'An error has occurred'});
+        } else {
+            console.log("successful edit group");
+            res.json(result);
+        }
+    });
+});
+
 module.exports = router;
