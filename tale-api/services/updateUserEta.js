@@ -69,6 +69,7 @@ async function updateUserEta(user) {
     }
     console.log(group.etaUser);
     console.log(max);
+    group.markModified('etaUser');
     group.etaLast = max;
     group.etaText = parseTime(max);
     group.save();
