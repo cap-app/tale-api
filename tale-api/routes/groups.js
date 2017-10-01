@@ -34,7 +34,7 @@ router.put('/', function (req, res, next) {
 });
 
 router.post('/addUser', function (req, res) {
-    Group.findByIdAndUpdate(req.body.id,
+    Group.findById(req.body.id,
         {
             $push: {
                 "users": {
