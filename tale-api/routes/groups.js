@@ -54,7 +54,7 @@ router.get('/time/:id', function (req, res) {
 });
 
 router.get('/user/:id', function (req, res) {
-    Group.find({user_ids: {$in : req.params.id}}, function (err, groups) {
+    Group.find({user_ids: req.params.id}, function (err, groups) {
         if (err) {
             res.send(err);
         } else {
