@@ -25,18 +25,18 @@ router.put('/', function(req, res, next) {
     console.log(req.body);
     var id = req.body._id;
 
-    User.findByIdAndUpdate(id, {$set: {location: req.body.location}}, function(err, user) {
+    User.findByIdAndUpdate(id, {$set: {location: req.body.location}},{new: true}, function(err, user) {
         if (err) {
             console.log('Error updating location: ' + err);
             res.send({'error':'An error has occurred'});
         } else {
             console.log("Updating location started \n " +
                 "Updating User: " +  user);
-           /* userUpdateService.updateUserEta(this).then(function() {
+           userUpdateService.updateUserEta(user).then(function() {
                 console.log("Update of User was successful");
             }, function(err) {
                 console.log("Updating of User ETA failed: " + err);
-            });*/
+            });
             res.json(user);
         }
     });
