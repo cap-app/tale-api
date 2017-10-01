@@ -30,6 +30,7 @@ async function updateUserEta(user) {
          //   traffic_model: TRAFFIC_MODEL
 
         }).asPromise().then(function (response) {
+            console.log("Call returned with response: " + reponse.status);
             if (response.status === 'OK') {
                 console.log("Received correct response.");
                 console.log("Start updating group Eta");
