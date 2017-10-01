@@ -24,7 +24,7 @@ async function updateUserEta(user) {
                 [user.location]
             ],
             destinations:
-                [destination],
+                destination,
             mode: user.transitMode,
 
         }).asPromise().then(function(response) {
