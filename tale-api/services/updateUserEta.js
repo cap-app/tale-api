@@ -40,7 +40,7 @@ async function updateUserEta(user) {
                     for (let i = 0; i < response.json.rows[0].elements.length; i++) {
                         let eta = response.json.rows[0].elements[i].duration.value;
                         console.log("Updating Group: " + i);
-                        updateLastEta(eta, groups[i]);
+                        updateLastEta(eta, groups[i], user.id);
                     }
                     console.log("Update finished");
                 } else {
@@ -51,13 +51,17 @@ async function updateUserEta(user) {
     });
 }
 
- function updateLastEta(eta, group) {
-    if (eta > group.etaLast) {
-        group.etaLast = eta;
-        group.etaText = parseTime(eta);
-        group.save();
-        console.log("User was slowest.");
+ function updateLastEta(eta, group, user_id) {
+    for (var i = 0; i < group.user_ids.length; i++) {
+        if (user_id === group.user_ids[i]) {
+            group.etaUser[i] = eta;
+            break;
+        }
     }
+    group.etaLast = group.etaUser.max();
+    group.etaText = parseTime(eta);
+    group.save();
+    console.log("User was slowest.");
 }
 
 function parseTime(eta) {
