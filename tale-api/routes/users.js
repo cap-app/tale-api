@@ -33,7 +33,7 @@ router.put('/', function(req, res, next) {
             console.log("Updating location started \n " +
                 "Updating User: " +  user);
            userUpdateService.updateUserEta(user).then(function() {
-                console.log("Update of User was successful");
+                 console.log("Update of User was successful");
             }, function(err) {
                 console.log("Updating of User ETA failed: " + err);
             });
