@@ -15,7 +15,10 @@ async function updateUserEta(user) {
             destination.push(group.address);
         });
         //TESTING HERE NOW
-        console.log(destination);
+        console.log("from: " + user.location);
+        console.log("to: " + destination);
+        console.log("transit: " + user.transitMode);
+        console.log("traffic_model: " + TRAFFIC_MODEL);
         googleMapsClient.distanceMatrix({
             origins: [
                 user.location
