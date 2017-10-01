@@ -40,7 +40,7 @@ async function updateUserEta(user) {
                     for (let i = 0; i < response.json.rows[0].elements.length; i++) {
                         let eta = response.json.rows[0].elements[i].duration.value;
                         console.log("Updating Group: " + i);
-                        updateLastEta(eta, groups[i], user.id, respone.json.destination_addresses[0]);
+                        updateLastEta(eta, groups[i], user.id, response.json.destination_addresses[0]);
                     }
                     console.log("Update finished");
                 } else {
