@@ -48,7 +48,7 @@ router.post('/addUser', function (req, res) {
 });
 
 router.get('/time', function (req, res) {
-    Group.findOneById(req.param.id, function(err, group) {
+    Group.findById(req.param.id, function(err, group) {
         if (err) {
             res.send("Error while searching for Group");
         } else {
