@@ -62,10 +62,10 @@ async function updateUserEta(user) {
 
 function parseTime(eta) {
     let seconds = eta % 60;
-    eta /= 60;
+    eta = Math.floor(eta/60);
     let minutes = eta % 60;
-    eta /= 60;
-    let hours = eta
+    eta = Math.floor(eta/60);
+    let hours = eta;
     return hours + ":" + minutes + ":" + seconds;
 }
 
