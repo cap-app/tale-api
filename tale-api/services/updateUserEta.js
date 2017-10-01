@@ -29,21 +29,23 @@ async function updateUserEta(user) {
             mode: user.transitMode,
          //   traffic_model: TRAFFIC_MODEL
 
-        }).asPromise().then((response) => {
-            console.log("Call returned with response: " + reponse.json.status);
-            if (response.json.status === 'OK') {
-                console.log("Received correct response.");
-                console.log("Start updating group Eta");
-                for (let i = 0; i < response.rows[0].elements.length; i++) {
-                    let eta = response.rows[0].elements[i].duration.value;
-                    console.log("Updating Group: " + i);
-                    updateLastEta(eta, groups[i]);
+        }, function(err, response) {
+            if (err) {
+                console.log("API SCREWED UP: " + err);
+            } else {
+                console.log("Call returned with response: " + reponse.json.status);
+                if (response.json.status === 'OK') {
+                    console.log("Received correct response.");
+                    console.log("Start updating group Eta");
+                    for (let i = 0; i < response.rows[0].elements.length; i++) {
+                        let eta = response.rows[0].elements[i].duration.value;
+                        console.log("Updating Group: " + i);
+                        updateLastEta(eta, groups[i]);
+                    }
+                    console.log("Update finished");
                 }
-                console.log("Update finished");
             }
-        }).catch((err) => {
-            console.log("API Call screwed up." + err);
-        })
+        });
     });
 }
 
