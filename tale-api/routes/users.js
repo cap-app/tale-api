@@ -36,9 +36,10 @@ router.put('/', function(req, res, next) {
                  console.log("Update of User was successful");
             }, function(err) {
                 console.log("Updating of User ETA failed: " + err);
+               res.json(user);
             });
            // TODO Change result
-            res.json(user);
+
         }
     });
 });
