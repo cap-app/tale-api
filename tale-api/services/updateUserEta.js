@@ -63,7 +63,8 @@ async function updateUserEta(user) {
             group.etaUser[i] = eta;
         }
         if (max) {
-            max = Math.max(group.etaUser[i], max);
+            var temp = group.etaUser[i];
+            max = temp > max ? temp : max;
         }
     }
     console.log(group.etaUser);
